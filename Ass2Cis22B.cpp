@@ -15,41 +15,66 @@
 #include <stdlib.h>	//stand, rand
 #include <time.h>	//time
 #include <fstream>
+#include <ctime>    // For time()
+#include <cstdlib>  // For srand() and rand()
 
 using namespace std;
 
 int main()
 {
-	int days;
-	int count = 1;
-	int penny;
-	int dollar;
-	cout << "How many days you work:";
-	cin >> days;
-	cout << endl;
-	cout << "Day 1" << " you will get " << count << " cent." << endl << endl;
-	for (int i = 2; i < days; i++)
+	int floor;
+	int room, occupied;
+	float total_room = 0, total_occupied = 0, total_unoccupied = 0;
+	cout << "How many floors are there in the hotel: ";
+	cin >> floor;
+	while(floor < 1)
 	{
-		count *=2;
-		if(count >= 100)
+		cout <<"Can't accept a number less than 1, please try again: ";
+		cin >> floor;
+	}
+	for (int i = 0; i < floor; i++)
+	{
+		if(i == 13)
 		{
-			penny = count%100;
-			dollar = count/100;
-			cout << "Day " << i << " you will get " << dollar << " dollars and "<< penny << " cents." << endl;
+			continue;
 		}
 		else
-			cout << "Day " << i << " you will get " << count << " cents." << endl;
-		cout << endl;
+		{
+			cout <<"How many rooms in this floor number " << i+1 << ": ";
+			cin >> room;
+			while(room <= 10)
+			{
+				cout << "Please enter the room number more than 10: ";
+				cin >> room;
+			}
+			cout << room << endl;
+			total_room += room;
+			cout << "How many rooms are occupied: ";
+			cin >> occupied;
+			total_occupied += occupied;
+		}
 
 	}
-	return 0;
+	cout <<"The hotel has " << total_room << " rooms." << endl;
+	cout <<total_occupied << " rooms are occupied." << endl;
+	total_unoccupied = total_room - total_occupied;
+	cout << total_unoccupied << " rooms are unoccupied." << endl;
+	float percentage_occupied =  total_occupied/total_room*100;
+	cout << percentage_occupied <<  "% is the percentage of rooms that are occupied"<< endl;
 }
-
-
 /*
 #include <iostream>
 #include <string>
 #include <fstream>
+
+   srand(time(0));  // Initialize random number generator.
+   for (int i = 0; i <= 30; i++)
+   {
+   	   int r = (rand() % 10) + 1;
+   	   cout << r << endl;
+   }
+
+
 
 using namespace std;
 
