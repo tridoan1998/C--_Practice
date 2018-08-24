@@ -20,48 +20,63 @@
 
 using namespace std;
 
+void Question13_Chapter5();
+void Question17_Chapter5();
+
 int main()
 {
-	int floor;
-	int room, occupied;
-	float total_room = 0, total_occupied = 0, total_unoccupied = 0;
-	cout << "How many floors are there in the hotel: ";
-	cin >> floor;
-	while(floor < 1)
-	{
-		cout <<"Can't accept a number less than 1, please try again: ";
-		cin >> floor;
-	}
-	for (int i = 0; i < floor; i++)
-	{
-		if(i == 13)
+
+	Question17_Chapter5();
+
+	return 0;
+}
+
+void Question13_Chapter5()
+{
+	int number;
+	int higher;
+	cin >> number;	//number = 2
+	higher = number;	// higher = number = 2
+	do{
+
+		cin >> number;	// number = 3
+		if(higher < number) //2 < 3
 		{
-			continue;
+			higher = number; // higher = 3
 		}
 		else
-		{
-			cout <<"How many rooms in this floor number " << i+1 << ": ";
-			cin >> room;
-			while(room <= 10)
-			{
-				cout << "Please enter the room number more than 10: ";
-				cin >> room;
-			}
-			cout << room << endl;
-			total_room += room;
-			cout << "How many rooms are occupied: ";
-			cin >> occupied;
-			total_occupied += occupied;
-		}
+			continue;		//keep hgiher the same
+	}while(number != -99);
 
-	}
-	cout <<"The hotel has " << total_room << " rooms." << endl;
-	cout <<total_occupied << " rooms are occupied." << endl;
-	total_unoccupied = total_room - total_occupied;
-	cout << total_unoccupied << " rooms are unoccupied." << endl;
-	float percentage_occupied =  total_occupied/total_room*100;
-	cout << percentage_occupied <<  "% is the percentage of rooms that are occupied"<< endl;
+	cout << higher;
 }
+
+void Question17_Chapter5()
+{
+	int store[5];
+	int count;
+	int result[5];
+	for (int i = 0; i < 5; i++)
+	{
+		count = 0;
+		cout << "Enter today's sales for store " << i+1 << ":";
+		cin >> store[i];
+		while(store[i] > 0)
+		{
+			store[i] -= 100;
+			count += 1;
+		}
+		result[i] = count;
+	}
+
+	cout <<"SALES BAR CHART\n(Each * = $100)" << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Store " << i << ": " << result[i] << endl;
+	}
+}
+
+
 /*
 #include <iostream>
 #include <string>
