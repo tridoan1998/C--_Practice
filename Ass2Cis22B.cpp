@@ -17,17 +17,20 @@
 #include <fstream>
 #include <ctime>    // For time()
 #include <cstdlib>  // For srand() and rand()
+#include <fstream>
 
 using namespace std;
 
 void Question13_Chapter5();
 void Question17_Chapter5();
+void Question18_Chapter5();
+void Question20_Chapter5();
+
 
 int main()
 {
 
-	Question17_Chapter5();
-
+	Question20_Chapter5();
 	return 0;
 }
 
@@ -69,14 +72,85 @@ void Question17_Chapter5()
 		result[i] = count;
 	}
 
+	cout << endl;
 	cout <<"SALES BAR CHART\n(Each * = $100)" << endl;
 	for (int i = 0; i < 5; i++)
 	{
-		cout << "Store " << i << ": " << result[i] << endl;
+		cout << "Store " << i+1 << ": ";
+		for (int j = 0; j < result[i]; j++)
+		{
+			cout << "*";
+		}
+		cout << endl;
 	}
 }
 
+void Question18_Chapter5()
+{
+	ifstream file;
+	int year, population;
+	int count = 0;
+	int calculation[5];
+	file.open("People.txt");
+	if(file.is_open())
+	{
+		cout << "PRAIRIEVILLE POPULATION GROWTH\n(each * represents 1,000 people)" << endl;
+		while(!file.eof())
+		{
+			file >> year >> population;
+			calculation[count] = population/1000;
+			cout << year << " ";
+			for (int i = 0; i< calculation[count]; i++)
+			{
+				cout << "*";
+			}
+			cout << endl;
+			count += 1;
+		}
+	}
+	else
+	{
+		cout << "Error!!!";
+		exit(true);
+	}
+	file.close();
 
+}
+
+void Question20_Chapter5()
+{
+	//declare a random variable
+	int random_number = rand()%100 +10;
+
+	//input variable from user to guess the random number
+	int user_guess;
+	cout << "Please enter your guess for the number: ";
+	cin >> user_guess;
+
+	//amount times the user can guess the number
+	int count = 0;
+	while(user_guess != random_number)
+	{
+		if(user_guess > random_number)
+		{
+			cout <<"Go lower";
+			cin >> user_guess;
+		}
+		else
+		{
+			cout << "Go higher";
+			cin >> user_guess;
+		}
+		count += 1;
+		//this if statement won't run until count reach 10
+		if(count == 10)
+		{
+			cout << "You failed";
+			exit(true);
+		}
+	}
+	cout << "Correct";
+}
 /*
 #include <iostream>
 #include <string>
