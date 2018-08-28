@@ -25,12 +25,14 @@ void Question13_Chapter5();
 void Question17_Chapter5();
 void Question18_Chapter5();
 void Question20_Chapter5();
+void Question22_Chapter5();
+void Question23_Chapter5();
 
 
 int main()
 {
 
-	Question20_Chapter5();
+	Question23_Chapter5();
 	return 0;
 }
 
@@ -143,13 +145,33 @@ void Question20_Chapter5()
 		}
 		count += 1;
 		//this if statement won't run until count reach 10
-		if(count == 10)
-		{
-			cout << "You failed";
-			exit(true);
-		}
 	}
 	cout << "Correct";
+	cout << count << " is the amonut of times you took you guess.";
+}
+
+void Question22_Chapter5()
+{
+	int number;
+	do
+	{
+		cout <<"Enter a number no greater than 15: ";
+		cin >> number;
+	}while(number > 15 || number <= 0);
+
+	for (int i = 0; i < number; i++)
+	{
+		for(int j = 0; j < number; j++)
+		{
+			cout << "X";
+		}
+		cout << endl;
+	}
+}
+
+void void Question23_Chapter5()
+{
+
 }
 /*
 #include <iostream>
