@@ -169,10 +169,39 @@ void Question22_Chapter5()
 	}
 }
 
-void void Question23_Chapter5()
+void Question23_Chapter5()
 {
+	string element = "++++++++++";
+	string space = "                ";
+	int count = 0;	//keep length of string element
+	//find length element
+	while(element[count] != NULL)
+	{
+		count +=1;
+	}
+
+	cout << "Pattern A "<< space << "Pattern B";
+
+
+	//outer loop run 10 times
+	for (int i = 1; i <= count; i++)
+	{
+		for (int a = 0; a < i; a++)
+			cout << "+";
+		cout << space;
+		for (int j = 10; j > 0; j--)
+		{
+			cout << "+";
+		}
+		//inner loop print out the + sign
+		//while(i > 0)
+		cout << endl;
+	}
+
 
 }
+
+
 /*
 #include <iostream>
 #include <string>
