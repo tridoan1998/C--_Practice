@@ -27,12 +27,13 @@ void Question18_Chapter5();
 void Question20_Chapter5();
 void Question22_Chapter5();
 void Question23_Chapter5();
-
+void Question24_Chapter5();
+void test(int &a, int &b);
+double Question1_Chapter6(double wholesale_cost, double markup_percentage);
 
 int main()
 {
 
-	Question23_Chapter5();
 	return 0;
 }
 
@@ -179,27 +180,94 @@ void Question23_Chapter5()
 	{
 		count +=1;
 	}
+	cout << count << endl;
+	cout << "Pattern A "<< space << "Pattern B" << endl;
 
-	cout << "Pattern A "<< space << "Pattern B";
 
 
-	//outer loop run 10 times
+	//outer loop run 10 times, three for loop inside to create the + signs and space
 	for (int i = 1; i <= count; i++)
 	{
+		//create + for pattern A
 		for (int a = 0; a < i; a++)
 			cout << "+";
-		cout << space;
-		for (int j = 10; j > 0; j--)
+
+		//create space
+		for (int b = 26; b > i; b--)
+		{
+			cout << " ";
+		}
+
+		//ceare + for pattern B
+		for (int c = count+1; c > i; c--)
 		{
 			cout << "+";
 		}
-		//inner loop print out the + sign
-		//while(i > 0)
 		cout << endl;
 	}
-
-
 }
+
+void Question24_Chapter5()
+{
+	ifstream inputfile;
+	int read_in_number;			//keep the numbers in this variable
+	int total_number = 0;					//count the amount of numbers in the file
+	int sum = 0;
+	inputfile.open("People.txt");
+
+	// open file
+	if(inputfile.is_open())
+	{
+		while(!inputfile.eof())
+		{
+			inputfile >> read_in_number;
+			sum += read_in_number;
+			total_number++;
+		}
+	}
+	//edge case
+	else
+	{
+		cout << "Error!";
+		exit(true);
+	}
+	inputfile.close();
+
+	cout << total_number << endl;
+	cout << sum;
+}
+
+void test(int &a, int &b)
+{
+	a = 2;
+	b = 5;
+	cout << a << " " << b;
+}
+
+
+double Question1_Chapter6(double wholesale_cost, double markup_percentage)
+{
+
+/*	these codes go to main
+
+	double wholesale_cost, markup_percentage;
+	cout << "enter an item’s wholesale cost: ";
+	cin >> wholesale_cost;
+	cout << "enter markup percentage: ";
+	cin >> markup_percentage;
+
+	cout << fixed << setprecision(2) << Question1_Chapter6(wholesale_cost, markup_percentage);
+
+*/
+
+	double result;
+ 	result = wholesale_cost*markup_percentage/100 + wholesale_cost;
+	return result;
+}
+
+
+
+
 
 
 /*
