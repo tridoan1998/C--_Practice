@@ -29,7 +29,19 @@ void Question22_Chapter5();
 void Question23_Chapter5();
 void Question24_Chapter5();
 void test(int &a, int &b);
+
 double Question1_Chapter6(double wholesale_cost, double markup_percentage);
+double Question3_Chapter6(double Northeast, double Southeast, double Northwest, double Southwest);
+double getSales();
+
+//is passed the name of a region. It asks the user for the
+//number of automobile accidents reported in that region during the last year, validates
+//the input, then returns it. It should be called once for each city region.
+int getNumAccidents();
+//is passed the five accident totals. It determines which is the
+//smallest and prints the name of the region, along with its accident figure.
+void findLowest(int north, int south, int east, int west, int central);
+
 
 int main()
 {
@@ -266,10 +278,121 @@ double Question1_Chapter6(double wholesale_cost, double markup_percentage)
 }
 
 
+double Question3_Chapter6(double Northeast, double Southeast, double Northwest, double Southwest)
+{
+
+	/*
+	double Northeast = getSales();
+	double Southeast = getSales();
+	double Northwest = getSales();
+	double Southwest = getSales();
+	cout << "The highest value is " << Question3_Chapter6(Northeast, Southeast, Northwest, Southwest);
+
+	*/
 
 
+	double highest = 0;
+	//using if else statement to compare and set the highest value to variable highest
+	if(Northeast > highest)
+	{
+		highest = Northeast;
+	}
+	else
+	{
+
+	}
+	if(Southeast > highest)
+	{
+		highest = Southeast;
+	}
+	else
+	{
+
+	}
+	if(Northwest > highest)
+	{
+		highest = Northwest;
+	}
+	else
+	{
+
+	}
+	if(Southwest > highest)
+	{
+		highest = Southwest;
+	}
+	else
+	{
+
+	}
+
+	return highest;
+}
+
+double getSales()
+{
+	double total_sale = 0;
+	cout << "Enter the sale: ";
+	cin >> total_sale;
+	while(total_sale < 0.00)
+	{
+		cout <<"Please enter an amount greater than 0.00: ";
+		cin >> total_sale;
+	}
+	return total_sale;
+}
 
 
+int getNumAccidents()
+{
+
+	/*
+	//get data for north, south, east, west, and central
+	int north = getNumAccidents();
+	int south = getNumAccidents();;
+	int east = getNumAccidents();
+	int west = getNumAccidents();
+	int central = getNumAccidents();
+
+	findLowest(north, south, east, west, central);
+
+	*/
+
+	int num = 0;
+	do
+	{
+		cout << "Enter the number of automobile accidents: ";
+		cin >> num;
+	}while(num < 0);
+
+	return num;
+}
+
+//this function passed the five data integer variables
+//print out the lowest value of the five datas passed
+void findLowest(int north, int south, int east, int west, int central)
+{
+	int lowest = north;
+
+	if(lowest > south)
+	{
+		lowest = south;
+	}
+	if(lowest > east)
+	{
+		lowest = east;
+	}
+	if(lowest > west)
+	{
+		 lowest = west;
+	}
+	if(lowest > central)
+	{
+		lowest = central;
+	}
+
+	cout << "The lowest out of the five is: " << lowest;
+}
 /*
 #include <iostream>
 #include <string>
