@@ -42,9 +42,15 @@ int getNumAccidents();
 //smallest and prints the name of the region, along with its accident figure.
 void findLowest(int north, int south, int east, int west, int central);
 
+//this function take in the time as second and return the distance in meter.
+int fallingDistance(int seconds);
 
 int main()
 {
+	// calling it in a loop that passes the values 1 through 10 as arguments and
+	//displays the return value
+	for (int i = 1; i <= 10; i++)
+		cout << fallingDistance(i);
 
 	return 0;
 }
@@ -393,6 +399,18 @@ void findLowest(int north, int south, int east, int west, int central)
 
 	cout << "The lowest out of the five is: " << lowest;
 }
+
+
+int fallingDistance(int seconds)
+{
+	int distance;
+	double g = 9.8;
+	distance = 1/2*g*seconds*seconds;
+	return distance;
+}
+
+
+
 /*
 #include <iostream>
 #include <string>
