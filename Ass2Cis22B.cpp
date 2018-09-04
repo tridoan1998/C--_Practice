@@ -29,28 +29,50 @@ void Question22_Chapter5();
 void Question23_Chapter5();
 void Question24_Chapter5();
 void test(int &a, int &b);
-
 double Question1_Chapter6(double wholesale_cost, double markup_percentage);
 double Question3_Chapter6(double Northeast, double Southeast, double Northwest, double Southwest);
 double getSales();
-
 //is passed the name of a region. It asks the user for the
 //number of automobile accidents reported in that region during the last year, validates
 //the input, then returns it. It should be called once for each city region.
 int getNumAccidents();
 //is passed the five accident totals. It determines which is the
 //smallest and prints the name of the region, along with its accident figure.
-void findLowest(int north, int south, int east, int west, int central);
-
+//void findLowest(int north, int south, int east, int west, int central);
 //this function take in the time as second and return the distance in meter.
 int fallingDistance(int seconds);
 
+//should ask the user for a test score, store it in a reference parameter
+//variable, and validate it. This function should be called by main once for each
+//of the five scores to be entered
+void getScore(int &test_score);
+
+//should calculate and display the average of the four highest
+//scores. This function should be called just once by main and should be passed the
+//five scores.
+void calcAverage(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5);
+
+//should find and return the lowest of the five scores passed to it.
+//It should be called by calcAverage, which uses the function to determine which of
+//the five scores to drop.
+int findLowest(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5);
+
 int main()
 {
-	// calling it in a loop that passes the values 1 through 10 as arguments and
-	//displays the return value
-	for (int i = 1; i <= 10; i++)
-		cout << fallingDistance(i);
+	int test_score1 = 0;
+	int test_score2 = 0;
+	int test_score3 = 0;
+	int test_score4 = 0;
+	int test_score5 = 0;
+
+	getScore(test_score1);
+	getScore(test_score2);
+	getScore(test_score3);
+	getScore(test_score4);
+	getScore(test_score5);
+
+	calcAverage(test_score1, test_score2, test_score3, test_score4, test_score5);
+
 
 	return 0;
 }
@@ -376,6 +398,8 @@ int getNumAccidents()
 
 //this function passed the five data integer variables
 //print out the lowest value of the five datas passed
+/*
+
 void findLowest(int north, int south, int east, int west, int central)
 {
 	int lowest = north;
@@ -399,18 +423,94 @@ void findLowest(int north, int south, int east, int west, int central)
 
 	cout << "The lowest out of the five is: " << lowest;
 }
-
+	*/
 
 int fallingDistance(int seconds)
 {
+
+	/*
+	// calling it in a loop that passes the values 1 through 10 as arguments and
+	//displays the return value
+	for (int i = 1; i <= 10; i++)
+		cout << fallingDistance(i);
+	*/
 	int distance;
 	double g = 9.8;
 	distance = 1/2*g*seconds*seconds;
 	return distance;
 }
 
+//should ask the user for a test score, store it in a reference parameter
+//variable, and validate it. This function should be called by main once for each
+//of the five scores to be entered
+void getScore(int &test_score)
+{
+	do{
+		cout << "Enter a test score: ";
+		cin >> test_score;
+	}while(test_score < 0 || test_score > 100);
 
+}
 
+//should find and return the lowest of the five scores passed to it.
+//It should be called by calcAverage, which uses the function to determine which of
+//the five scores to drop.
+int findLowest(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5)
+{
+	//declare a variable
+	int lowest = 0;
+	test_score1 = lowest;
+	if(test_score1 > test_score2)
+	{
+		test_score2 = lowest;
+	}
+	if(test_score2 > test_score3)
+	{
+		test_score3 = lowest;
+	}
+	if(test_score3 > test_score4)
+	{
+		test_score4 = lowest;
+	}
+	if(test_score4 > test_score5)
+	{
+		test_score5 = lowest;
+	}
+	return lowest;
+}
+
+//should calculate and display the average of the four highest
+//scores. This function should be called just once by main and should be passed the
+//five scores.
+void calcAverage(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5)
+{
+	int lowest = 0;
+	int average = 0;
+	lowest = findLowest(test_score1, test_score2, test_score3, test_score4, test_score5);
+	if(lowest == test_score1)
+	{
+		average = test_score2 + test_score3 + test_score4 + test_score5;
+	}
+	if(lowest == test_score2)
+	{
+		average = test_score1 + test_score3 + test_score4 + test_score5;
+	}
+	if(lowest == test_score3)
+	{
+		average = test_score1 + test_score2 + test_score4 + test_score5;
+	}
+	if(lowest == test_score4)
+	{
+		average = test_score1 + test_score2 + test_score3 + test_score5;
+	}
+	if(lowest == test_score5)
+	{
+		average = test_score1 + test_score2 + test_score3 + test_score4;
+	}
+
+	average /= 4;
+	cout << "Average: " << average << endl;
+}
 /*
 #include <iostream>
 #include <string>
