@@ -55,24 +55,39 @@ void calcAverage(int &test_score1, int &test_score2, int &test_score3, int &test
 //should find and return the lowest of the five scores passed to it.
 //It should be called by calcAverage, which uses the function to determine which of
 //the five scores to drop.
-int findLowest(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5);
+//int findLowest(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5);
 
+
+//should ask the user for a judge’s score, store it in a reference
+//parameter variable, and validate it. This function should be called by main once for
+//each of the five judges.
+void getJudgeData(int &judge);
+
+//should calculate and display the average of the three scores that
+//remain after dropping the highest and lowest scores the performer received. This
+//function should be called just once by main and should be passed the five scores.
+void calcScore(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5);
+
+//should find and return the lowest of the five scores passed to it.
+int findLowest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5);
+
+//should find and return the highest of the five scores passed to it
+int findHighest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5);
 int main()
 {
-	int test_score1 = 0;
-	int test_score2 = 0;
-	int test_score3 = 0;
-	int test_score4 = 0;
-	int test_score5 = 0;
+	int judge1 = 0;
+	int judge2 = 0;
+	int judge3 = 0;
+	int judge4 = 0;
+	int judge5 = 0;
 
-	getScore(test_score1);
-	getScore(test_score2);
-	getScore(test_score3);
-	getScore(test_score4);
-	getScore(test_score5);
+	getJudgeData(judge1);
+	getJudgeData(judge2);
+	getJudgeData(judge3);
+	getJudgeData(judge4);
+	getJudgeData(judge5);
 
-	calcAverage(test_score1, test_score2, test_score3, test_score4, test_score5);
-
+	calcScore(judge1, judge2, judge3, judge4, judge5);
 
 	return 0;
 }
@@ -452,6 +467,8 @@ void getScore(int &test_score)
 
 }
 
+
+/*
 //should find and return the lowest of the five scores passed to it.
 //It should be called by calcAverage, which uses the function to determine which of
 //the five scores to drop.
@@ -479,11 +496,31 @@ int findLowest(int &test_score1, int &test_score2, int &test_score3, int &test_s
 	return lowest;
 }
 
+*/
 //should calculate and display the average of the four highest
 //scores. This function should be called just once by main and should be passed the
 //five scores.
 void calcAverage(int &test_score1, int &test_score2, int &test_score3, int &test_score4, int &test_score5)
 {
+
+	/*
+
+	int test_score1 = 0;
+	int test_score2 = 0;
+	int test_score3 = 0;
+	int test_score4 = 0;
+	int test_score5 = 0;
+
+	getScore(test_score1);
+	getScore(test_score2);
+	getScore(test_score3);
+	getScore(test_score4);
+	getScore(test_score5);
+
+	calcAverage(test_score1, test_score2, test_score3, test_score4, test_score5);
+
+	*/
+
 	int lowest = 0;
 	int average = 0;
 	lowest = findLowest(test_score1, test_score2, test_score3, test_score4, test_score5);
@@ -511,6 +548,89 @@ void calcAverage(int &test_score1, int &test_score2, int &test_score3, int &test
 	average /= 4;
 	cout << "Average: " << average << endl;
 }
+
+
+//should ask the user for a judge’s score, store it in a reference
+//parameter variable, and validate it. This function should be called by main once for
+//each of the five judges.
+// Do not accept judge scores lower than 0 or higher than 10.
+void getJudgeData(int &jungle)
+{
+	do{
+		cout <<"Please enter a number: ";
+		cin >> jungle;
+	}while(jungle < 0 || jungle > 10);
+
+}
+
+//should calculate and display the average of the three scores that
+//remain after dropping the highest and lowest scores the performer received. This
+//function should be called just once by main and should be passed the five scores.
+void calcScore(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
+{
+	int lowest  = 0;
+	lowest = findLowest(judge1, judge2, judge3, judge4, judge5);
+	int highest = 0;
+	highest = findHighest(judge1, judge2, judge3, judge4, judge5);
+	int total = 0;
+	total = judge1 + judge2 + judge3 + judge4 + judge5;
+	total -= (lowest + highest);
+	int average = 0;
+	average = (total*100)/3;
+	cout << "Average is: " << average << endl;
+}
+
+//should find and return the lowest of the five scores passed to it.
+int findLowest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
+{
+	//set lowest variable and check every of the five parameters by setting it to the lowest variable if the parameter is lower.
+	int lowest = 0;
+	lowest = judge1;
+	if(lowest > judge2)
+	{
+		lowest = judge2;
+	}
+	if(lowest > judge3)
+	{
+		lowest = judge3;
+	}
+	if(lowest > judge4)
+	{
+		lowest = judge4;
+	}
+	if(lowest > judge5)
+	{
+		lowest = judge5;
+	}
+	return lowest;
+}
+
+//should find and return the highest of the five scores passed to it
+int findHighest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
+{
+	int highest = 0;
+	highest = judge1;
+	if(highest < judge2)
+	{
+		highest = judge2;
+	}
+	if(highest < judge3)
+	{
+		highest = judge3;
+	}
+	if(highest < judge4)
+	{
+		highest = judge4;
+	}
+	if(highest < judge5)
+	{
+		highest = judge5;
+	}
+	return highest;
+}
+
+
+
 /*
 #include <iostream>
 #include <string>
