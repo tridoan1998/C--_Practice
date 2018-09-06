@@ -73,21 +73,33 @@ int findLowest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5);
 
 //should find and return the highest of the five scores passed to it
 int findHighest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5);
+
+//A function called by main that asks the user for the number of employees in
+//the company. This value should be returned as an int. (The function accepts no
+//arguments.)
+int	number_of_employee();
+
+//A function called by main that accepts one argument: the number of employees in
+//the company. The function should ask the user to enter the number of days each
+//employee missed during the past year. The total of these days should be returned as
+//an int.
+int day_each_employee_work(int number_of_employee);
+
+//A function called by main that takes two arguments: the number of employees in
+//the company and the total number of days absent for all employees during the year.
+//The function should return, as a double, the average number of days absent. (This
+//function does not perform screen output and does not ask the user for input.)
+double average_number_of_days_absent(double a, double b);
+
 int main()
 {
-	int judge1 = 0;
-	int judge2 = 0;
-	int judge3 = 0;
-	int judge4 = 0;
-	int judge5 = 0;
+	double Number_of_employee = 0;
+	double Day_each_employee_work = 0;
+	Number_of_employee = number_of_employee();
+	Day_each_employee_work = day_each_employee_work(Number_of_employee);
+	cout << "The average number of days absent is: " << average_number_of_days_absent(Number_of_employee, Day_each_employee_work);
 
-	getJudgeData(judge1);
-	getJudgeData(judge2);
-	getJudgeData(judge3);
-	getJudgeData(judge4);
-	getJudgeData(judge5);
 
-	calcScore(judge1, judge2, judge3, judge4, judge5);
 
 	return 0;
 }
@@ -608,6 +620,24 @@ int findLowest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
 //should find and return the highest of the five scores passed to it
 int findHighest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
 {
+	/*
+
+	int judge1 = 0;
+	int judge2 = 0;
+	int judge3 = 0;
+	int judge4 = 0;
+	int judge5 = 0;
+
+	getJudgeData(judge1);
+	getJudgeData(judge2);
+	getJudgeData(judge3);
+	getJudgeData(judge4);
+	getJudgeData(judge5);
+
+	calcScore(judge1, judge2, judge3, judge4, judge5);
+
+	 */
+
 	int highest = 0;
 	highest = judge1;
 	if(highest < judge2)
@@ -628,6 +658,62 @@ int findHighest(int &judge1, int &judge2, int &judge3, int&judge4, int &judge5)
 	}
 	return highest;
 }
+
+//A function called by main that asks the user for the number of employees in
+//the company. This value should be returned as an int. (The function accepts no
+//arguments.)
+// Do not accept a number less than 1 for the number of employees.
+int	number_of_employee()
+{
+	int employee = 0;
+	do{
+		cout <<"Enter how many employees in the compnay: ";
+		cin >> employee;
+	}while(employee < 1);
+	return employee;
+}
+
+//A function called by main that accepts one argument: the number of employees in
+//the company. The function should ask the user to enter the number of days each
+//employee missed during the past year. The total of these days should be returned as
+//an int.
+//Do not accept a negative number for the days any employee missed.
+int day_each_employee_work(int number_of_employee)
+{
+	int total_day = 0;
+	int day = 0;
+	int i = 0;
+
+	do
+	{
+		cout <<"Please enter how many days employee " << i+1 << " work: ";
+		cin >> day;
+		while(day <=0)
+		{
+			cout << "Please enter again the days employee works: ";
+			cin >> day;
+		}
+		total_day += day;
+		i++;
+	}while(i < number_of_employee);
+	return total_day;
+}
+
+//A function called by main that takes two arguments: the number of employees in
+//the company and the total number of days absent for all employees during the year.
+//The function should return, as a double, the average number of days absent. (This
+//function does not perform screen output and does not ask the user for input.)
+double average_number_of_days_absent(double a, double b)
+{
+	double average = 0.0;
+	average = b/a;
+	return average;
+}
+
+
+/*
+
+*/
 
 
 
