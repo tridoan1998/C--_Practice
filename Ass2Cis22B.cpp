@@ -91,15 +91,31 @@ int day_each_employee_work(int number_of_employee);
 //function does not perform screen output and does not ask the user for input.)
 double average_number_of_days_absent(double a, double b);
 
+//create a function that done these:
+//The number of spools ordered.
+//The number of spools in stock.
+//Whether there are special shipping and handling charges.
+void user_input(int &number_of_spools_ordered, int &number_of_spools_in_stock, char &input, bool &special_shipping);
+
+
+/*
+A painting company has determined that for every 110 square feet of wall space,
+one gallon of paint and eight hours of labor will be required. The company charges
+$25.00 per hour for labor. Write a modular program that allows the user to enter
+the number of rooms that are to be painted and the price of the paint per gallon. It
+should also ask for the square feet of wall space in each room. It should then display
+the following data:
+• The number of gallons of paint required
+• The hours of labor required
+• The cost of the paint
+• The labor charges
+• The total cost of the paint job
+Input validation: Do not accept a value less than 1 for the number of rooms. Do not
+accept a value less than $10.00 f
+
+ */
 int main()
 {
-	double Number_of_employee = 0;
-	double Day_each_employee_work = 0;
-	Number_of_employee = number_of_employee();
-	Day_each_employee_work = day_each_employee_work(Number_of_employee);
-	cout << "The average number of days absent is: " << average_number_of_days_absent(Number_of_employee, Day_each_employee_work);
-
-
 
 	return 0;
 }
@@ -705,15 +721,109 @@ int day_each_employee_work(int number_of_employee)
 //function does not perform screen output and does not ask the user for input.)
 double average_number_of_days_absent(double a, double b)
 {
+
+
+	/*
+		double Number_of_employee = 0;
+		double Day_each_employee_work = 0;
+		Number_of_employee = number_of_employee();
+		Day_each_employee_work = day_each_employee_work(Number_of_employee);
+		cout << "The average number of days absent is: " << average_number_of_days_absent(Number_of_employee, Day_each_employee_work);
+	*/
 	double average = 0.0;
 	average = b/a;
 	return average;
 }
 
 
+//create a function that done these:
+//The number of spools ordered.
+//The number of spools in stock.
+//Whether there are special shipping and handling charges.
+//Input Validation: Do not accept numbers less than 1 for spools ordered. Do not accept
+//a number less than 0 for spools in stock or shipping and handling charges.
+void user_input(int &number_of_spools_ordered, int &number_of_spools_in_stock, char &input, bool &special_shipping)
+{
+
+	/*
+		int number_of_spools_ordered, number_of_spools_in_stock = 0;
+		char input = 0;
+		bool special_shipping = true;
+		user_input(number_of_spools_ordered, number_of_spools_in_stock, input, special_shipping);
+
+
+		cout << number_of_spools_ordered;
+		cout << number_of_spools_in_stock;
+		cout << input;
+		cout << special_shipping;
+
+	*/
+	do{
+		cout <<"Enter the number of spools ordered: ";
+		cin >> number_of_spools_ordered;
+	}while(number_of_spools_ordered < 1);
+
+	do{
+		cout << "Enter the number of spools in stock: ";
+		cin >> number_of_spools_in_stock;
+	}while(number_of_spools_in_stock < 0);
+
+
+
+	cout << "Are there special shipping and handling charges (type y for yes or type n for no: ";
+	cin >> input;
+
+	while(input != 'n' && input != 'y')
+	{
+		cout << "Enter again y or n: ";
+		cin >> input;
+	}
+
+	if(input == 'y')
+	{
+		special_shipping = true;
+		cout << "How much is the special shipping: ";
+	}
+	else
+	{
+		special_shipping = false;
+	}
+}
+
+
 /*
 
+
 */
+
+
+/*
+
+
+*/
+
+
+/*
+
+
+*/
+
+
+/*
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -851,7 +961,6 @@ int main() {
 
 
 
-/*
  * buddle sort
  * Arguments: string array1, string array2, counter1, and counter2
  * create 2 chars arrays, sort it using bubble sort and sort it with the string array as well.
