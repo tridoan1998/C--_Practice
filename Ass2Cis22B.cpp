@@ -112,14 +112,125 @@ the following data:
 • The total cost of the paint job
 Input validation: Do not accept a value less than 1 for the number of rooms. Do not
 accept a value less than $10.00 f
-
  */
+void display_price();
+
+
+struct Node
+{
+public:
+	int data;
+	Node* next;
+	Node* previous;
+	Node(int D);
+private:
+};
+
+
+class Link_list{
+private:
+	Node* head;
+	Node* tail;
+	int size;
+	Node* iterator;
+
+public:
+	Link_list();
+	~Link_list();
+	int get_size();
+	void insertstart(int data);
+	void insertend(int data);
+	void print();
+};
 int main()
 {
-
+	Link_list A;
+	Node *n1, *n2;
+	Node(4);
+	cout << Node.data;
+	//A.insertstart(3);
+	//A.insertstart(2);
+	//.insertstart(1);
+	A.insertend(6);
+	A.print();
 	return 0;
 }
 
+
+Node::Node(int D)
+{
+	data = D;
+	next = NULL;
+	previous = NULL;
+}
+
+
+Link_list::Link_list()
+{
+	tail = head = NULL;
+	iterator = NULL;
+	size = 0;
+}
+Link_list::~Link_list()
+{
+	Node* a = head;
+	Node* b = NULL;
+	while(a != NULL)
+	{
+		b = a;
+		a = a->next;
+		delete b;
+	}
+	cout << endl;
+}
+
+int Link_list::get_size()
+{
+	return size;
+}
+
+void Link_list::insertstart(int data)
+{
+	if(size == 0)
+	{
+		Node *temp = new Node(data);
+		head = tail = temp;
+		size += 1;
+	}
+	else
+	{
+		Node* temp = new Node(data);
+		temp->next = head;
+		head->previous = temp;
+		head = temp;
+		size += 1;
+	}
+}
+
+void Link_list::insertend(int data)
+{
+	if(size == 0)
+	{
+		new Node(data);
+		head = tail = Node(data);
+		size += 1;
+	}
+	else
+	{
+
+	}
+}
+void Link_list::print()
+{
+	Node* temp = head;
+	while(temp != NULL)
+	{
+		cout << temp->data;
+		temp = temp->next;
+		cout << endl;
+	}
+	cout << endl;
+}
 void Question13_Chapter5()
 {
 	int number;
@@ -790,6 +901,33 @@ void user_input(int &number_of_spools_ordered, int &number_of_spools_in_stock, c
 	}
 }
 
+
+/*
+A painting company has determined that for every 110 square feet of wall space,
+one gallon of paint and eight hours of labor will be required. The company charges
+$25.00 per hour for labor. Write a modular program that allows the user to enter
+the number of rooms that are to be painted and the price of the paint per gallon. It
+should also ask for the square feet of wall space in each room. It should then display
+the following data:
+• The number of gallons of paint required
+• The hours of labor required
+• The cost of the paint
+• The labor charges
+• The total cost of the paint job
+Input validation: Do not accept a value less than 1 for the number of rooms. Do not
+accept a value less than $10.00 f
+ */
+void display_price()
+{
+	int number_of_rooms = 0;
+	do
+	{
+		cout << "Enter the number of rooms that are to be painted: ";
+		cin >> number_of_rooms;
+	}while(number_of_rooms < 1);
+
+	cout << number_of_rooms;
+}
 
 /*
 
