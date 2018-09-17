@@ -18,7 +18,8 @@
 #include <ctime>    // For time()
 #include <cstdlib>  // For srand() and rand()
 #include <fstream>
-
+#include <assert.h>     /* assert */
+#include "link_list.h";
 using namespace std;
 
 void Question13_Chapter5();
@@ -141,21 +142,32 @@ public:
 	void insertstart(int data);
 	void insertend(int data);
 	void print();
+	void removestart();
+	void removeend();
+	int getstart() const;
+	int getstop() const;
+	void pointiterator();
+	void advance_iterator();
+	int getiterator() const;
+	bool offEnd() const;
 };
 int main()
 {
-	Link_list A;
-	Node *n1, *n2;
-	Node(4);
-	cout << Node.data;
-	//A.insertstart(3);
-	//A.insertstart(2);
-	//.insertstart(1);
-	A.insertend(6);
-	A.print();
+	int array[] = {2, 3, 4, 5, 1, 4, 6, 2, 7, 4, 7, 2, 6, 7};
+	int i = 0;
+	while(array[i] != NULL)
+	{
+		i += 1;
+	}
+	cout << i;
+
+	//	Link_list A;
+	//A.insertstart(1);
+	//A.insertend(2);
+	//A.pointiterator();
+	//	A.getiterator();
 	return 0;
 }
-
 
 Node::Node(int D)
 {
@@ -163,7 +175,6 @@ Node::Node(int D)
 	next = NULL;
 	previous = NULL;
 }
-
 
 Link_list::Link_list()
 {
@@ -209,17 +220,101 @@ void Link_list::insertstart(int data)
 
 void Link_list::insertend(int data)
 {
-	if(size == 0)
+	if(size ==0)
 	{
-		new Node(data);
-		head = tail = Node(data);
+		Node *temp = new Node(data);
+		head = tail = temp;
 		size += 1;
 	}
 	else
 	{
-
+		Node* temp = new Node(data);	//Node* N = new Node(data);
+		temp->previous= tail;	//	N->linkprevious = stop;
+		tail->next = temp;		//	stop->linknext = N;
+		tail = temp;			//	stop = N;
+		size += 1;
 	}
 }
+
+void Link_list::removestart()
+{
+	if(size == 0)
+	{
+		cout << "There is no Link List!";
+	}
+	else if(size ==1)
+	{
+		delete head;
+		delete tail;
+		size -= 1;
+	}
+	else
+	{
+		Node* temp = head;
+		head = head->next;
+		delete temp;
+		size -= 1;
+	}
+}
+
+void Link_list::removeend()
+{
+	if(size == 0)
+	{
+		cout << "There is no Link List!";
+	}
+	else if(size ==1)
+	{
+		delete head;
+		head = tail = NULL;
+		size = 0;
+	}
+	else
+	{
+		Node* temp = tail;
+		tail = tail->previous;
+		tail->next = NULL;
+		delete temp;
+		size --;
+	}
+}
+int Link_list::getstart() const
+{
+	assert(size != 0);
+	return head->data;
+}
+//return the first element on the list
+int Link_list::getstop() const
+{
+	assert(size != 0);
+	return tail->data;
+}
+
+void Link_list::pointiterator()
+{
+	//assert(size != 0);
+	iterator = head;
+	cout << "sdfdsf";
+	cout << iterator->data;
+}
+
+void Link_list::advance_iterator()
+{
+	//assert(size > 1);
+	iterator = iterator->next;
+}
+
+bool Link_list::offEnd() const
+{
+	return iterator == NULL;
+}
+int Link_list::getiterator() const
+{
+	//assert(!offEnd());
+	cout << "sdfdsf";
+	return iterator->data;
+}
+
 void Link_list::print()
 {
 	Node* temp = head;
