@@ -19,6 +19,8 @@
 #include <cstdlib>  // For srand() and rand()
 #include <fstream>
 #include <assert.h>     /* assert */
+#include <array>
+
 #include "link_list.h";
 using namespace std;
 
@@ -151,15 +153,18 @@ public:
 	int getiterator() const;
 	bool offEnd() const;
 };
+
+bool binary_search(int array[], int left, int right, int x);
+
 int main()
 {
-	int array[] = {2, 3, 4, 5, 1, 4, 6, 2, 7, 4, 7, 2, 6, 7};
-	int i = 0;
-	while(array[i] != NULL)
-	{
-		i += 1;
-	}
-	cout << i;
+	int array[] = {3, 5, 6, 7, 10, 12, 43, 45, 66, 100};
+	//find the size of the array;
+	int n = sizeof(array)/ sizeof(array[0]);
+	int x = 0;
+	cout << "Enter the number to find: ";
+	cin >> x;
+	cout << binary_search(array, 0, n-1, x);
 
 	//	Link_list A;
 	//A.insertstart(1);
@@ -167,6 +172,25 @@ int main()
 	//A.pointiterator();
 	//	A.getiterator();
 	return 0;
+}
+
+//Parameter int end = 10; int start = 0;
+bool binary_search(int array[], int left, int right, int x)
+{
+	int mid = left + (right -1 ) / 2;
+	if(array[mid] == x )
+	{
+		return true;
+	}
+	else if(array[mid] > x )
+	{
+		return binary_search(array, left, mid-1, x);
+	}
+	else if(array[mid] < x)
+	{
+		return binary_search(array, mid+1, right, x);
+	}
+	return -1;
 }
 
 Node::Node(int D)
