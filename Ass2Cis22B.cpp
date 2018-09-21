@@ -152,32 +152,46 @@ public:
 	void advance_iterator();
 	int getiterator() const;
 	bool offEnd() const;
+	int length(Node* list, int count );
 };
 
 bool binary_search(int array[], int left, int right, int x);
 
+int print_recursion(int data);
+
 int main()
 {
-	int array[] = {3, 5, 6, 7, 10, 12, 43, 45, 66, 100};
-	//find the size of the array;
-	int n = sizeof(array)/ sizeof(array[0]);
-	int x = 0;
-	cout << "Enter the number to find: ";
-	cin >> x;
-	cout << binary_search(array, 0, n-1, x);
-
-	//	Link_list A;
-	//A.insertstart(1);
-	//A.insertend(2);
-	//A.pointiterator();
-	//	A.getiterator();
+	Link_list A;
+	Node* list = NULL;
+	A.insertstart(1);
+	A.insertstart(2);
+	cout << A.length(list, 0);
 	return 0;
 }
 
+int Link_list::length(Node* list, int count)
+{
+	list = head;
+	if(head == NULL)
+		return -1;
+	else
+		return Link_list::length(list->next, count+= 1);
+}
+
+
+int print_recursion(int data)
+{
+	cout << data;
+	cout << endl;
+	if(data == 0)
+		return -1;
+	else
+		return print_recursion(data-1);
+}
 //Parameter int end = 10; int start = 0;
 bool binary_search(int array[], int left, int right, int x)
 {
-	int mid = left + (right -1 ) / 2;
+	int mid = left + (right - right) / 2;
 	if(array[mid] == x )
 	{
 		return true;
@@ -190,7 +204,7 @@ bool binary_search(int array[], int left, int right, int x)
 	{
 		return binary_search(array, mid+1, right, x);
 	}
-	return -1;
+	return false;
 }
 
 Node::Node(int D)
