@@ -21,7 +21,6 @@
 #include <assert.h>     /* assert */
 #include <array>
 
-#include "link_list.h";
 using namespace std;
 
 void Question13_Chapter5();
@@ -118,8 +117,14 @@ accept a value less than $10.00 f
  */
 void display_price();
 
+class Car{
+public:
+	//functions go here
+private:
+	//data go here
+};
 
-struct Node
+struct	 Node
 {
 public:
 	int data;
@@ -136,7 +141,6 @@ private:
 	Node* tail;
 	int size;
 	Node* iterator;
-
 public:
 	Link_list();
 	~Link_list();
@@ -152,32 +156,52 @@ public:
 	void advance_iterator();
 	int getiterator() const;
 	bool offEnd() const;
-	int length(Node* list, int count );
+	void assign();
+	int get_list()const;
 };
 
 bool binary_search(int array[], int left, int right, int x);
 
 int print_recursion(int data);
 
+/*
+A prime number is a number that is only evenly divisible by itself and 1. For example,
+the number 5 is prime because it can only be evenly divided by 1 and 5. The number 6,
+however, is not prime because it can be divided evenly by 1, 2, 3, and 6.
+Write a function name isPrime, which takes an integer as an argument and returns
+true if the argument is a prime number, or false otherwise. Demonstrate the function
+in a complete program
+
+
+*/
+
 int main()
 {
-	Link_list A;
-	Node* list = NULL;
-	A.insertstart(1);
-	A.insertstart(2);
-	cout << A.length(list, 0);
+	int a = 0;
+	while(a < 10)
+	{
+		int number = 0;
+		cout << "Enter a number: ";
+		cin >> number;
+		while(number < 0)
+		{
+			cout << "Please enter again a number that not negative: ";
+			cin >> number;
+		}
+		int count = 0;
+		for (int i = 1; i <= number; i++)
+		{
+			if(number % i == 0)
+				count+= 1;
+		}
+		if(count > 2)
+			cout << "not prime\n";
+		else
+			cout << "is prime\n";
+	a++;
+	}
 	return 0;
 }
-
-int Link_list::length(Node* list, int count)
-{
-	list = head;
-	if(head == NULL)
-		return -1;
-	else
-		return Link_list::length(list->next, count+= 1);
-}
-
 
 int print_recursion(int data)
 {
@@ -188,7 +212,7 @@ int print_recursion(int data)
 	else
 		return print_recursion(data-1);
 }
-//Parameter int end = 10; int start = 0;
+//Parameter integer end = 10; integer start = 0;
 bool binary_search(int array[], int left, int right, int x)
 {
 	int mid = left + (right - right) / 2;
